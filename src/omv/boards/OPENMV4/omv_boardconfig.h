@@ -182,6 +182,12 @@
 #define OMV_AXI_QOS_MDMA_R_PRI                15 // Max pri to move data.
 #define OMV_AXI_QOS_MDMA_W_PRI                15 // Max pri to move data.
 
+// Enable additional GPIO ports.
+#define OMV_GPIO_PORT_F_ENABLE                (1)
+#define OMV_GPIO_PORT_G_ENABLE                (1)
+#define OMV_GPIO_PORT_H_ENABLE                (1)
+#define OMV_GPIO_PORT_I_ENABLE                (1)
+
 // Main image sensor I2C bus
 #define OMV_CSI_I2C_ID                        (1)
 #define OMV_CSI_I2C_SPEED                     (OMV_I2C_SPEED_STANDARD)
@@ -218,8 +224,8 @@
 
 #define OMV_CSI_D0_PIN                        (&omv_pin_C6_DCMI)
 #define OMV_CSI_D1_PIN                        (&omv_pin_C7_DCMI)
-#define OMV_CSI_D2_PIN                        (&omv_pin_E0_DCMI)
-#define OMV_CSI_D3_PIN                        (&omv_pin_E1_DCMI)
+#define OMV_CSI_D2_PIN                        (&omv_pin_G10_DCMI)
+#define OMV_CSI_D3_PIN                        (&omv_pin_G11_DCMI)
 #define OMV_CSI_D4_PIN                        (&omv_pin_E4_DCMI)
 #define OMV_CSI_D5_PIN                        (&omv_pin_B6_DCMI)
 #define OMV_CSI_D6_PIN                        (&omv_pin_E5_DCMI)
