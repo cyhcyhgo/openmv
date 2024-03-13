@@ -50,7 +50,7 @@ int main() {
 
     HAL_Init();
 
-    #if defined(OMV_BOOT_QSPIF_LAYOUT)
+    #if defined(OMV_BOOT_QSPIF_LAYOU)
     if (qspif_init() != 0) {
         __fatal_error();
     }
@@ -99,7 +99,7 @@ int main() {
     // Deinit USB
     USBD_DeInit(&USBD_Device);
 
-    #if defined(OMV_BOOT_QSPIF_LAYOUT)
+    #if defined(OMV_BOOT_QSPIF_LAYOU)
     qspif_reset();
     qspif_deinit();
     #endif
