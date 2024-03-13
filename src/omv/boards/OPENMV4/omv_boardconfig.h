@@ -147,7 +147,7 @@
 #define OMV_SRAM4_ORIGIN                      0x38000000
 #define OMV_SRAM4_LENGTH                      64K
 #define OMV_AXI_SRAM_ORIGIN                   0x24000000
-#define OMV_AXI_SRAM_LENGTH                   512K
+#define OMV_AXI_SRAM_LENGTH                   1024K
 
 // Flash configuration.
 #define OMV_FLASH_FFS_ORIGIN                  0x08020000
