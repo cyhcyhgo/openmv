@@ -191,7 +191,7 @@ static int sensor_detect() {
                     omv_i2c_readb2(&sensor.i2c_bus, slv_addr, OV5640_CHIP_ID, &sensor.chip_id);
                 }
                 return slv_addr;
-            #endif //(OMV_GC2145_ENABLE == 1) 
+            #endif // (OMV_GC2145_ENABLE == 1) 
 
             #if (OMV_OV2640_ENABLE == 1)
             case OV2640_SLV_ADDR: // Or OV9650.
