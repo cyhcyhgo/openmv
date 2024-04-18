@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        target: [OPENMV4, OPENMV4P]
+        target: [OPENMV4, OPENMV4P, ARDUINO_GIGA]
       fail-fast: false
     steps:
     - name: '⏳ Checkout repository'

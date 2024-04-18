@@ -21,7 +21,7 @@
 #define MT9M114_SLV_ADDR        (0x90)
 #define LEPTON_SLV_ADDR         (0x54)
 #define HM0XX0_SLV_ADDR         (0x48)
-#define GC2145_SLV_ADDR         (0x78)
+#define GC2145_SLV_ADDR         (0x3C)
 #define FROGEYE2020_SLV_ADDR    (0x6E)
 
 // Chip ID Registers
