@@ -279,7 +279,7 @@ int sensor_probe_init(uint32_t bus_id, uint32_t bus_speed) {
     omv_i2c_init(&sensor.i2c_bus, bus_id, bus_speed);
     mp_hal_delay_ms(10);
 
-    sensor_set_xclk_frequency(OMV_GC2145_XCLK_FREQ)
+    sensor_set_xclk_frequency(OMV_GC2145_XCLK_FREQ);
     init_ret = gc2145_init(&sensor);
     return init_ret;
 
