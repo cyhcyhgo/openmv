@@ -187,7 +187,8 @@ static int sensor_detect() {
 
             #if (OMV_OV5640_ENABLE == 1) || (OMV_GC2145_ENABLE == 1)
             // OV5640 and GC2145 share the same I2C address
-            case OV5640_SLV_ADDR:   // Or GC2145
+            case GC2145_SLV_ADDR:   // Or GC2145
+            case OV5640_SLV_ADDR:
                 // Try to read GC2145 chip ID first
                 sensor_set_xclk_frequency(OMV_GC2145_XCLK_FREQ);
                 omv_i2c_readb(&sensor.i2c_bus, slv_addr, GC_CHIP_ID, &sensor.chip_id);
