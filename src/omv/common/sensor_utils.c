@@ -174,6 +174,8 @@ __weak int sensor_reset() {
 
 static int sensor_detect() {
     uint8_t devs_list[OMV_ISC_MAX_DEVICES];
+    // Enable XCLK first, or GC2145 would not answer
+    sensor_set_xclk_frequency(OMV_GC2145_XCLK_FREQ);
     int n_devs = omv_i2c_scan(&sensor.i2c_bus, devs_list, OMV_ARRAY_SIZE(devs_list));
 
     for (int i = 0; i < OMV_MIN(n_devs, OMV_ISC_MAX_DEVICES); i++) {
@@ -190,7 +192,6 @@ static int sensor_detect() {
             case GC2145_SLV_ADDR:   // Or GC2145
             case OV5640_SLV_ADDR:
                 // Try to read GC2145 chip ID first
-                sensor_set_xclk_frequency(OMV_GC2145_XCLK_FREQ);
                 omv_i2c_readb(&sensor.i2c_bus, slv_addr, GC_CHIP_ID, &sensor.chip_id);
                 if (sensor.chip_id != GC2145_ID) {
                     // If it fails, try reading OV5640 chip ID.
