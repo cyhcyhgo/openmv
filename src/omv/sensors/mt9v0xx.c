@@ -542,7 +542,12 @@ int mt9v0xx_init(sensor_t *sensor) {
             break;
         }
         default: {
-            cfa_type = MONO_CFA;
+            if (sensor->chip_id_w == MT9V0X2_ID){
+                sensor->chip_id_w = MT9V0X2_C_ID;
+                cfa_type = BAYER_CFA;
+            } else {
+                cfa_type = MONO_CFA;
+            }
             break;
         }
     }
