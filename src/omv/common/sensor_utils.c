@@ -279,6 +279,10 @@ int sensor_probe_init(uint32_t bus_id, uint32_t bus_speed) {
     omv_i2c_init(&sensor.i2c_bus, bus_id, bus_speed);
     mp_hal_delay_ms(10);
 
+    sensor_set_xclk_frequency(OMV_GC2145_XCLK_FREQ)
+    init_ret = gc2145_init(&sensor);
+    return init_ret;
+
     // Scan the bus multiple times using different reset and power-down
     // polarities, until a supported sensor is detected.
     if ((sensor.slv_addr = sensor_detect()) == 0) {
