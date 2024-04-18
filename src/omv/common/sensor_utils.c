@@ -181,7 +181,7 @@ static int sensor_detect() {
     for (int i = 0; i < OMV_MIN(n_devs, OMV_ISC_MAX_DEVICES); i++) {
         uint8_t slv_addr = devs_list[i];
         switch (slv_addr) {
-            #if (OMV_GC2145_ENABLE == 1)
+            #if (OMV_OV5640_ENABLE == 1) || (OMV_GC2145_ENABLE == 1)
             // OV5640 and GC2145 share the same I2C address
             case GC2145_SLV_ADDR:   // Or GC2145
                 // Try to read GC2145 chip ID first
@@ -191,7 +191,7 @@ static int sensor_detect() {
                     omv_i2c_readb2(&sensor.i2c_bus, slv_addr, OV5640_CHIP_ID, &sensor.chip_id);
                 }
                 return slv_addr;
-            #endif // (OMV_GC2145_ENABLE == 1) 
+            #endif // (OMV_OV5640_ENABLE == 1) || (OMV_GC2145_ENABLE == 1)
 
             #if (OMV_OV2640_ENABLE == 1)
             case OV2640_SLV_ADDR: // Or OV9650.
@@ -199,7 +199,8 @@ static int sensor_detect() {
                 return slv_addr;
             #endif // (OMV_OV2640_ENABLE == 1)
 
-            #if (OMV_OV5640_ENABLE == 1) 
+            #if (OMV_OV5640_ENABLE == 1) || (OMV_GC2145_ENABLE == 1)
+            // OV5640 and GC2145 share the same I2C address
             case OV5640_SLV_ADDR:
                 // Try to read GC2145 chip ID first
                 omv_i2c_readb(&sensor.i2c_bus, slv_addr, GC_CHIP_ID, &sensor.chip_id);
@@ -208,7 +209,7 @@ static int sensor_detect() {
                     omv_i2c_readb2(&sensor.i2c_bus, slv_addr, OV5640_CHIP_ID, &sensor.chip_id);
                 }
                 return slv_addr;
-            #endif // (OMV_OV5640_ENABLE == 1) 
+            #endif // (OMV_OV5640_ENABLE == 1) || (OMV_GC2145_ENABLE == 1)
 
             #if (OMV_OV7725_ENABLE == 1) || (OMV_OV7670_ENABLE == 1) || (OMV_OV7690_ENABLE == 1)
             case OV7725_SLV_ADDR: // Or OV7690 or OV7670.
