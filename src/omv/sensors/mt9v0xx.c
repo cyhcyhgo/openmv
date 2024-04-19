@@ -25,6 +25,7 @@
 #define ACTIVE_SENSOR_HEIGHT    (480)
 
 #define MONO_CFA_ID             (0)
+#define BAYER_CFA_ID_032        (4)
 #define RCCC_CFA_ID             (5)
 #define BAYER_CFA_ID            (6)
 
@@ -524,7 +525,8 @@ int mt9v0xx_init(sensor_t *sensor) {
     uint16_t cfa_type_reg;
     int ret = omv_i2c_readw(&sensor->i2c_bus, sensor->slv_addr, MT9V0XX_CFA_ID_REG, &cfa_type_reg);
     switch ((cfa_type_reg >> 9) & 0x7) {
-        case BAYER_CFA_ID: {
+        case BAYER_CFA_ID: 
+        case BAYER_CFA_ID_032: {
             cfa_type = BAYER_CFA;
             switch (sensor->chip_id_w) {
                 case MT9V0X2_ID: {
@@ -542,12 +544,7 @@ int mt9v0xx_init(sensor_t *sensor) {
             break;
         }
         default: {
-            if (sensor->chip_id_w == MT9V0X2_ID){
-                sensor->chip_id_w = MT9V0X2_C_ID;
-                cfa_type = BAYER_CFA;
-            } else {
-                cfa_type = MONO_CFA;
-            }
+            cfa_type = MONO_CFA;
             break;
         }
     }
